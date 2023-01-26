@@ -1,0 +1,28 @@
+dependencies:
+  - OpenZeppelin/openzeppelin-contracts@4.8.1
+  - smartcontractkit/chainlink@1.11.0
+
+compiler:
+  solc:
+    remappings:
+      - '@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.8.1'
+      - '@chainlink=smartcontractkit/chainlink@1.11.0'
+
+dotenv: .env
+
+networks:
+  default: development
+
+  development:
+    verify: False
+
+  mainnet-fork:
+    verify: False
+
+  goerli:
+    vrfCoordinator: '0x2Ca8E0C643bDe4C2E08ab1fA0da3401AdAD7734D'
+    keyHash: '0x79d3d8832d904592c0bf9818b621522c988bb8b0c05cdc3b15aea1b6e8db0c15'
+    verify: True
+
+wallets:
+  from_key: ${PRIVATE_KEY}
