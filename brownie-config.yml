@@ -11,12 +11,7 @@ compiler:
 dotenv: .env
 
 networks:
-
-  default: ganache-dadaia
-
-  ganache-dadaia:
-    verify: False
-
+  default: goerli
 
   mainnet-fork:
     link_token: '0x514910771AF9Ca656af840dff83E8264EcF986CA'
@@ -25,14 +20,6 @@ networks:
     premium: 0.0005
     verify: False
 
-
-  polygon-mainnet-fork:
-      link_token: '0xb0897686c545045aFc77CF20eC7A532E3120E0F1'
-      vrfCoordinator: '0xAE975071Be8F8eE67addBC1A82488F1C24858067'
-      keyHash: '0x6e099d640cde6de9d40ac749b4b594126b0169747122711109c9985d47751f93'
-      premium: 0.0005
-      verify: False
-
   goerli:
     link_token: '0x326C977E6efc84E512bB9C30f76E30c160eD06FB'
     vrfCoordinator: '0x2Ca8E0C643bDe4C2E08ab1fA0da3401AdAD7734D'
@@ -40,6 +27,12 @@ networks:
     premium: 0.25
     verify: True
 
+  polygon-mainnet-fork:
+      link_token: '0xb0897686c545045aFc77CF20eC7A532E3120E0F1'
+      vrfCoordinator: '0xAE975071Be8F8eE67addBC1A82488F1C24858067'
+      keyHash: '0x6e099d640cde6de9d40ac749b4b594126b0169747122711109c9985d47751f93'
+      premium: 0.0005
+      verify: False
 
   polygon-test:
       link_token: '0x326C977E6efc84E512bB9C30f76E30c160eD06FB'
