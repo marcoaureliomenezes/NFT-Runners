@@ -46,13 +46,13 @@ Segue abaixo as melhorias propostas para o projeto NFTRunners, não em questão 
 
 ### 1.1 - Contrato NftRunners:
 
-- Parâmetrização no construtor de atributos setados como constantes no contrato visto em aula. Especificamente o endereço do VRFCoordinator, Keyhash, CallbackGasLimit e requestConfirmations. Isso torna o contrato flexivel para deploy em diferentes networks.
+- Parametrização no construtor de atributos setados como constantes no contrato visto em aula. Especificamente o endereço do VRFCoordinator, Keyhash, CallbackGasLimit e requestConfirmations. Isso torna o contrato flexivel para deploy em diferentes networks.
 
-- Implementação de rotina automatizada para realização de deploy dos contratos e verificação dos mesmos em redes de teste.
-- Implementação de VRFCoordinator2Mock para realização de testes nas redes de fork mainnet-fork, polygon-mainnet-fork.
-- Implementação de testes unitários usando as redes de fork mainnet-fork e polygon-mainnet-fork.
-- Implementação de funções em python para interagir diretamente com contratos ja deployados.
-- Implementação de testes de integração
+- Implementação de **rotina automatizada de deploy** dos contratos e verificação dos mesmos em redes de teste.
+- Implementação de **VRFCoordinator2Mock** para realização de testes nas redes de fork mainnet-fork, polygon-mainnet-fork.
+- Implementação de **testes unitários** usando as redes de fork **mainnet-fork** e **polygon-mainnet-fork**.
+- Implementação de **testes de integração** usando as redes de teste **goerli** e **mumbai**.
+- Implementação de **funções em python** para **interação com contratos** ja deployados.
 
 ### 1.2 Contrato NftRunnersFactory:
 
