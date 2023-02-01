@@ -1,21 +1,13 @@
 from brownie import NftRunners, NftRunnersFactory, config, network
 from brownie import network, accounts, config
-
-NON_FORKED_LOCAL_CHAIN = ["development", "ganache-dadaia"]
-FORKED_LOCAL_CHAIN = ["mainnet-fork"]
-LOCAL_CHAIN_ENV = NON_FORKED_LOCAL_CHAIN + FORKED_LOCAL_CHAIN
+from scripts.utils import get_account
 
 
-
-def get_account(**kwargs):
-    is_local = network.show_active() in LOCAL_CHAIN_ENV
-    if is_local and kwargs.get('index'): return accounts[kwargs["index"]]
-    elif is_local and not kwargs.get('index'): return accounts[0]
-    elif not is_local and kwargs.get("id"): return accounts.load(kwargs["id"])
-    else: return accounts.add(config["wallets"]["from_key"])
-
-def deploy_nft_runners(subscription_id, callback_gas_limit, request_confirmations):
+def deploy_nft_runners():
     env_vars = config["networks"][network.show_active()]
+    subscription_id = 9033
+    callback_gas_limit = 2500000
+    request_confirmations = 3
     owner = get_account()
     vrf_coordinator = env_vars["vrfCoordinator"]
     key_hash = env_vars["keyHash"]
@@ -24,19 +16,17 @@ def deploy_nft_runners(subscription_id, callback_gas_limit, request_confirmation
     tx = NftRunners.deploy(*args, {'from': owner}, publish_source=is_verified)
     return tx  
 
-
-def deploy_nft_runners_factory(subscription_id, callback_gas_limit, request_confirmations):
+def deploy_nft_runners_factory():
     env_vars = config["networks"][network.show_active()]
+    request_confirmations = 3
     owner = get_account()
     vrf_coordinator = env_vars["vrfCoordinator"]
     key_hash = env_vars["keyHash"]
     is_verified = env_vars.get("verify")
-    tx = NftRunnersFactory.deploy({'from': owner}, publish_source=is_verified)
+    tx = NftRunnersFactory.deploy(vrf_coordinator, key_hash, request_confirmations, {'from': owner}, publish_source=is_verified)
     return tx  
 
+
 def main():
-    subscription_id=9033
-    callbackGasLimit = 2500000
-    requestConfirmations = 3
-    res = deploy_nft_runners_factory(subscription_id, callbackGasLimit, requestConfirmations)
+    res = deploy_nft_runners()
     print(res)

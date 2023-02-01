@@ -11,18 +11,42 @@ compiler:
 dotenv: .env
 
 networks:
-  default: development
 
-  development:
+  default: ganache-dadaia
+
+  ganache-dadaia:
     verify: False
+
 
   mainnet-fork:
+    link_token: '0x514910771AF9Ca656af840dff83E8264EcF986CA'
+    vrfCoordinator: '0x271682DEB8C4E0901D1a1550aD2e64D568E69909'
+    keyHash: '0x8af398995b04c28e9951adb9721ef74c74f93e6a478f39e7e0777be13527e7ef'
+    premium: 0.0005
     verify: False
 
+
+  polygon-mainnet-fork:
+      link_token: '0xb0897686c545045aFc77CF20eC7A532E3120E0F1'
+      vrfCoordinator: '0xAE975071Be8F8eE67addBC1A82488F1C24858067'
+      keyHash: '0x6e099d640cde6de9d40ac749b4b594126b0169747122711109c9985d47751f93'
+      premium: 0.0005
+      verify: False
+
   goerli:
+    link_token: '0x326C977E6efc84E512bB9C30f76E30c160eD06FB'
     vrfCoordinator: '0x2Ca8E0C643bDe4C2E08ab1fA0da3401AdAD7734D'
     keyHash: '0x79d3d8832d904592c0bf9818b621522c988bb8b0c05cdc3b15aea1b6e8db0c15'
+    premium: 0.25
     verify: True
+
+
+  polygon-test:
+      link_token: '0x326C977E6efc84E512bB9C30f76E30c160eD06FB'
+      vrfCoordinator: '0xAE975071Be8F8eE67addBC1A82488F1C24858067'
+      keyHash: '0x4b09e658ed251bcafeebbc69400383d49f344ace09b9576fe248bb02c003fe9f'
+      premium: 0.0005
+      verify: True
 
 wallets:
   from_key: ${PRIVATE_KEY}

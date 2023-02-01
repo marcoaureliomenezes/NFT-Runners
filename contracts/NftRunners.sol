@@ -39,6 +39,7 @@ contract NftRunners is ERC721, ERC721URIStorage, VRFConsumerBaseV2 {
         string image;
         uint256 distance;
     }
+    
     Runner[] public runners;
 
     constructor(uint64 _subscriptionId, address _vrfCoordinator, bytes32 _keyHash, uint32 _callbackGasLimit, uint16 _requestConfirmations) ERC721("RunnerNFT", "RUN") VRFConsumerBaseV2(vrfCoordinator) {
@@ -49,7 +50,6 @@ contract NftRunners is ERC721, ERC721URIStorage, VRFConsumerBaseV2 {
         keyHash = _keyHash;
         callbackGasLimit = _callbackGasLimit;
         requestConfirmations = _requestConfirmations;
-        safeMint(msg.sender, 2);
     }
 
     function safeMint(address to, uint256 charId) public {
